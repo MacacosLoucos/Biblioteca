@@ -21,7 +21,7 @@ public class Main {
         //c.conect();
         
         char a = 'A';
-        a += 25/5;
+        a += 25/5/5;
         System.out.println(a);
         
     }
