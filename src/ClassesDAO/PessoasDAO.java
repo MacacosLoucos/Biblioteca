@@ -19,6 +19,8 @@ import javax.swing.JOptionPane;
  */
 public abstract class PessoasDAO {
 
+    
+    /*Método que permite a visualização dos livro cadastrado e ativos da biblioteca*/
     public ArrayList<Livros> vizualizar() {//Metodo retorna os livros que estão cadastrados tanto para ADM e USER
 
         ArrayList<Livros> l = null;
@@ -41,7 +43,7 @@ public abstract class PessoasDAO {
             }
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Não foi possível procurar por livros", "Atenção!", 2);
+            JOptionPane.showMessageDialog(null, "Não foi possível procurar por livros \n " + e, "Atenção!", 2);
         }
 
         return l;

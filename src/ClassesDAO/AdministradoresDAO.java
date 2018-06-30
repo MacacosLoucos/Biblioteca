@@ -21,7 +21,8 @@ import javax.swing.JOptionPane;
  * @author Rocha
  */
 public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
-
+    
+    /*Método para procurar o ultimo livro cadastrado para adicinar seus exemplares*/
     private int ultimoIdLivro() {
         PreparedStatement n = null;
         String sql = "SELECT max(liv_id) as id FROM tb_livros;";
@@ -37,11 +38,12 @@ public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
             }
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Não foi possível procurar o id do livro", "Atenção!", 2);
+            JOptionPane.showMessageDialog(null, "Não foi possível procurar o id do livro \n" + e, "Atenção!", 2);
         }
         return valorID;
     }
 
+    /*Método para execluir os exemplares de um livro para depois acrecentar mais desde o começo*/
     private void excluirExemplares(Livros l) {
 
         PreparedStatement n = null;
@@ -56,11 +58,12 @@ public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
             n.execute();
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Não foi possível excluir os livros", "Atenção!", 2);
+            JOptionPane.showMessageDialog(null, "Não foi possível excluir os livros \n" + e, "Atenção!", 2);
         }
 
     }
-
+    
+    /*Método para Adicionar exemplares de livros*/
     private void adicionarExemplares(Livros l) {
 
         PreparedStatement n = null;
@@ -90,11 +93,12 @@ public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
             }
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Não foi possível adicionar novos exemplares", "Atenção!", 2);
+            JOptionPane.showMessageDialog(null, "Não foi possível adicionar novos exemplares \n" + e, "Atenção!", 2);
         }
 
     }
-
+    
+    /*Método para alterar a disponibilidade de um exemplar quando ele for emprestado*/
     private void alterarDisponibilidade(Exemplar x) {
 
         PreparedStatement n = null;
@@ -110,11 +114,12 @@ public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
             n.executeUpdate();
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Não foi possível atualizar a disponibilidade", "Atenção!", 2);
+            JOptionPane.showMessageDialog(null, "Não foi possível atualizar a disponibilidade \n" + e, "Atenção!", 2);
         }
 
     }
-
+    /*Metodo para cadastrar novos livros e aumotmaticamente adicina novos 
+    exemplares de acordo com a quantidade que foi passada*/
     @Override
     public void cadastrar(Livros l, Administrador a) {
         PreparedStatement n = null;
@@ -137,13 +142,15 @@ public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
             n.execute();
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Não foi possível cadastrar um novo livro", "Atenção!", 2);
+            JOptionPane.showMessageDialog(null, "Não foi possível cadastrar um novo livro \n" + e, "Atenção!", 2);
         }
 
         this.adicionarExemplares(l);
 
     }
 
+    /*Metodo para modificar algum atributo do livro que pode ter sido passado errado,
+    atualizar a quantidade (Já adicinando os novos exemplares), etc.*/
     @Override
     public void atualizar(Livros l, Administrador a) {
         PreparedStatement n = null;
@@ -166,13 +173,15 @@ public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
             n.executeUpdate();
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Não foi possível atualizar livro", "Atenção!", 2);
+            JOptionPane.showMessageDialog(null, "Não foi possível atualizar livro \n" + e, "Atenção!", 2);
         }
 
         this.adicionarExemplares(l);
 
     }
-
+    
+    /*Método para alterar o estado do de um livro, não o excluindo, mas, o deixa
+    indisponivel podendo ser recuperado com uma atualização direta no banco de dados*/
     @Override
     public void deletar(Livros l, Administrador a) {
 
@@ -190,11 +199,11 @@ public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
             n.executeUpdate();
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Não foi possível excluir o livro", "Atenção!", 2);
+            JOptionPane.showMessageDialog(null, "Não foi possível excluir o livro \n " + e, "Atenção!", 2);
         }
 
     }
-
+    /*Método para emprestar um exemplar de um livro*/
     @Override
     public void emprestar(ArrayList<Exemplar> l, Usuario u) {
 
@@ -220,9 +229,32 @@ public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
             }
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Não foi possível realizar emprestimos", "Atenção!", 2);
+            JOptionPane.showMessageDialog(null, "Não foi possível realizar emprestimos \n" + e, "Atenção!", 2);
         }
 
+    }
+    /*Método para confirma a devolução do livro pelo usuário*/
+    @Override
+    public void devolverLivro(Exemplar x, Usuario u) {
+        
+        PreparedStatement n = null;
+        
+        String sql = "DELETE FROM tb_emprestimos WHERE tb_pessoas_pes id = ? AND"
+                + "tb_exeplar_numero = ?;";
+        
+        try {
+            
+            n = Conectar.getConexao().prepareStatement(sql);
+            
+            n.setInt(1, u.getId());
+            n.setString(2, x.getNumero());
+            
+            n.execute();
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Não foi possível devolver livro \n" + e, "Atenção!", 2);
+        }
+        
     }
 
 }

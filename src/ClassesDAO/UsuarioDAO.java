@@ -6,7 +6,6 @@
 package ClassesDAO;
 
 import biblioteca.Conectar;
-import biblioteca.Exemplar;
 import biblioteca.Livros;
 import biblioteca.Usuario;
 import java.sql.PreparedStatement;
@@ -20,6 +19,9 @@ import javax.swing.JOptionPane;
  */
 public class UsuarioDAO extends PessoasDAO implements IFuncoesUSER {
 
+    
+    /*Método que permite ao usuário e administradores vizualizarem todos os livros
+    que estão cadastrados e ativos*/
     @Override
     public void adicionarPedidoDeEmprestimo(ArrayList<Livros> l, Usuario u) {
 
@@ -42,7 +44,7 @@ public class UsuarioDAO extends PessoasDAO implements IFuncoesUSER {
             }
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Não foi possível adicionar pedidos de emprestimos", "Atenção!", 2);
+            JOptionPane.showMessageDialog(null, "Não foi possível adicionar pedidos de emprestimos \n" + e, "Atenção!", 2);
         }
 
     }
