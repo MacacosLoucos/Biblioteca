@@ -24,14 +24,16 @@ public class Main {
         Conectar  c = new Conectar();
         c.conect();
        
-        UsuarioDAO u = new UsuarioDAO();
+        AdministradoresDAO u = new AdministradoresDAO();
         
-        Usuario n = new Usuario("", "", "", 0);
+        Administrador n = new Administrador("", "", "", 1);
         
         Livros f = new Livros();
         f.setId(7);
        
-       u.adicionarPedidoDeEmprestimo(f, n);
+       Livros l = new Livros();
+       
+       u.atualizar(l, n);
         
     }
     
