@@ -19,29 +19,23 @@ import javax.swing.JOptionPane;
  */
 public class UsuarioDAO extends PessoasDAO implements IFuncoesUSER {
 
-    
     /*Método que permite ao usuário e administradores vizualizarem todos os livros
     que estão cadastrados e ativos*/
     @Override
-    public void adicionarPedidoDeEmprestimo(ArrayList<Livros> l, Usuario u) {
+    public void adicionarPedidoDeEmprestimo(Livros l, Usuario u) {
 
         PreparedStatement n = null;
 
-        String sql = "INSERT INTO tb_predido_emprestimo (tb_pessoas_pes_id, tb_livros_liv_id) "
-                + "SELECT pes_id, liv_id FROM tb_livros l "
-                + "INNER JOIN tb_pessoas p ON (p.pes_id = ?) "
-                + "WHERE l.liv_estado = 0 AND liv_id = ?;";
+        String sql = "INSERT INTO tb_pedido_emprestimo (tb_pessoas_pes_id, tb_livros_liv_id) "
+                + "VALUES (?, ?)";
 
         try {
 
             n = Conectar.getConexao().prepareStatement(sql);
 
-            for (Livros x : l) {
-
-                n.setInt(1, u.getId());
-                n.setInt(2, x.getId());
-                n.execute();
-            }
+            n.setInt(1, u.getId());
+            n.setInt(2, l.getId());
+            n.execute();
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Não foi possível adicionar pedidos de emprestimos \n" + e, "Atenção!", 2);
@@ -49,5 +43,4 @@ public class UsuarioDAO extends PessoasDAO implements IFuncoesUSER {
 
     }
 
- 
 }

@@ -5,6 +5,10 @@
  */
 package biblioteca;
 
+import ClassesDAO.AdministradoresDAO;
+import ClassesDAO.UsuarioDAO;
+import java.util.ArrayList;
+
 /**
  *
  * @author Rocha
@@ -17,12 +21,17 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        //Conectar  c = new Conectar();
-        //c.conect();
+        Conectar  c = new Conectar();
+        c.conect();
+       
+        UsuarioDAO u = new UsuarioDAO();
         
-        char a = 'A';
-        a += 25/5/5;
-        System.out.println(a);
+        Usuario n = new Usuario("", "", "", 0);
+        
+        Livros f = new Livros();
+        f.setId(7);
+       
+       u.adicionarPedidoDeEmprestimo(f, n);
         
     }
     

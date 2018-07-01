@@ -23,9 +23,10 @@ public abstract class PessoasDAO {
     /*Método que permite a visualização dos livro cadastrado e ativos da biblioteca*/
     public ArrayList<Livros> vizualizar() {//Metodo retorna os livros que estão cadastrados tanto para ADM e USER
 
-        ArrayList<Livros> l = null;
+        ArrayList<Livros> l = new ArrayList();
 
-        String sql = "SELECT liv_titulo, liv_autor, liv_area, liv_editora FROM tb_livros WHERE liv_estado = 0;";
+        String sql = "SELECT liv_titulo, liv_autor, liv_area, liv_editora, "
+                + "liv_quantidade FROM tb_livros WHERE liv_estado = 0;";
 
         PreparedStatement n = null;
 
@@ -37,7 +38,8 @@ public abstract class PessoasDAO {
             while (rs.next()) {
 
                 Livros x = new Livros(rs.getString("liv_titulo"),
-                        rs.getString("liv_autor"), rs.getString("liv_editora"), rs.getString("liv_area"));
+                        rs.getString("liv_autor"), rs.getString("liv_editora"),
+                        rs.getString("liv_area"), rs.getInt("liv_quantidade"));
 
                 l.add(x);
             }

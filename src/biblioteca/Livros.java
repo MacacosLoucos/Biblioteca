@@ -16,21 +16,22 @@ public class Livros {
     private String editora;
     private String area;
     private int id;
-    private String id_administrador;
+    private int id_administrador;
     private String data_de_atualizacao;
     private String data_de_cadastro;
     private int quantidade;
     private int estado;
 
-    public Livros(String titulo, String autor, String editora, String area) {
+    public Livros(String titulo, String autor, String editora, String area, int quantidade) {
         this.titulo = titulo;
         this.autor = autor;
         this.editora = editora;
         this.area = area;
+        this.quantidade = quantidade;
     }
 
     public Livros(String titulo, String autor, String editora, String area, int
-            id, String id_administrador, String data_de_atualizacao, 
+            id, int id_administrador, String data_de_atualizacao, 
             String data_de_cadastro, int quantidade, int estado) {
         this.titulo = titulo;
         this.autor = autor;
@@ -43,6 +44,11 @@ public class Livros {
         this.quantidade = quantidade;
         this.estado = estado;
     }
+
+    public Livros() {
+    }
+    
+    
 
     
     public String getTitulo() {
@@ -85,11 +91,11 @@ public class Livros {
         this.id = id;
     }
 
-    public String getId_administrador() {
+    public int getId_administrador() {
         return id_administrador;
     }
 
-    public void setId_administrador(String id_administrador) {
+    public void setId_administrador(int id_administrador) {
         this.id_administrador = id_administrador;
     }
 

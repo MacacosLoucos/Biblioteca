@@ -16,6 +16,6 @@ import java.util.ArrayList;
  */
 public interface IFuncoesUSER {
  
-    void adicionarPedidoDeEmprestimo(ArrayList<Livros> l, Usuario u);
+    void adicionarPedidoDeEmprestimo(Livros l, Usuario u);
     
 }
