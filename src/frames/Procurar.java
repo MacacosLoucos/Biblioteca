@@ -5,7 +5,7 @@
  */
 package frames;
 
-import ClassesDAO.LivrosDAO;
+import biblioteca.Livros;
 import java.util.ArrayList;
 
 /**
@@ -105,7 +105,7 @@ public class Procurar extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1KeyReleased
 
     private void addlista() {
-        LivrosDAO l = new LivrosDAO();
+        Livros l = new Livros();
         ArrayList livros = l.selecionar();
         this.s = new String[livros.size()];
 

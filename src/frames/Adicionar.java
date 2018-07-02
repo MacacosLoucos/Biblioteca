@@ -6,7 +6,6 @@
 package frames;
 
 import biblioteca.Livros;
-import ClassesDAO.LivrosDAO;
 import javax.swing.JOptionPane;
 
 /**
