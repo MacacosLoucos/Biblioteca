@@ -5,8 +5,9 @@
  */
 package frames;
 
-import biblioteca.Livros;
-import java.util.ArrayList;
+import biblioteca.*;
+
+
 
 /**
  *
@@ -14,15 +15,14 @@ import java.util.ArrayList;
  */
 public class Procurar extends javax.swing.JFrame {
 
-    private String[] s;
-
     /**
      * Creates new form Procurar
      */
-    public Procurar() {
+    
+    public Procurar(){
         initComponents();
         super.setLocationRelativeTo(null);
-        this.addlista();
+        
     }
 
     /**
@@ -34,17 +34,22 @@ public class Procurar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
+        buscarLivro = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        lista = new javax.swing.JList<>();
+        procurarLista = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+        buscarLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarLivroActionPerformed(evt);
+            }
+        });
+        buscarLivro.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField1KeyReleased(evt);
+                buscarLivroKeyReleased(evt);
             }
         });
 
@@ -54,7 +59,7 @@ public class Procurar extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Livro:");
 
-        jScrollPane1.setViewportView(lista);
+        jScrollPane1.setViewportView(procurarLista);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -66,7 +71,7 @@ public class Procurar extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
-                    .addComponent(jTextField1))
+                    .addComponent(buscarLivro))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(156, Short.MAX_VALUE)
@@ -80,7 +85,7 @@ public class Procurar extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -90,31 +95,13 @@ public class Procurar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+    private void buscarLivroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscarLivroKeyReleased
         // TODO add your handling code here:
+    }//GEN-LAST:event_buscarLivroKeyReleased
 
-        String[] t = new String[s.length];
-        for (int i = 0; i < this.s.length; i++) {
-            if (this.s[i].contains(jTextField1.getText())) {
-                t[i] = this.s[i];
-            }
-
-        }
-        lista.setListData(t);
-
-    }//GEN-LAST:event_jTextField1KeyReleased
-
-    private void addlista() {
-        Livros l = new Livros();
-        ArrayList livros = l.selecionar();
-        this.s = new String[livros.size()];
-
-        for (int i = 0; i < livros.size(); i++) {
-            this.s[i] = livros.get(i).toString();
-        }
-        lista.setListData(this.s);
-        livros.clear();
-    }
+    private void buscarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarLivroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarLivroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,18 +131,16 @@ public class Procurar extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Procurar().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Procurar().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField buscarLivro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JList<String> lista;
+    private javax.swing.JList<String> procurarLista;
     // End of variables declaration//GEN-END:variables
 }

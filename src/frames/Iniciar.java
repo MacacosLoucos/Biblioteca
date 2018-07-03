@@ -16,6 +16,7 @@ public class Iniciar extends javax.swing.JFrame {
      */
     public Iniciar() {
         initComponents();
+        super.setLocationRelativeTo(null);
     }
 
     /**
@@ -27,56 +28,56 @@ public class Iniciar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        procurar = new javax.swing.JButton();
-        adicionar = new javax.swing.JButton();
+        procurarTela = new javax.swing.JButton();
+        adicionarLivroTela = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        atualizar = new javax.swing.JButton();
-        remover = new javax.swing.JButton();
-        emprestarlivro = new javax.swing.JButton();
+        atualizarLivroTela = new javax.swing.JButton();
+        removerLivroTela = new javax.swing.JButton();
+        emprestarLivroTela = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        devolverlivro = new javax.swing.JButton();
+        devolverLivroTela = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        procurar.setText("Procurar Livro");
-        procurar.addActionListener(new java.awt.event.ActionListener() {
+        procurarTela.setText("Procurar Livro");
+        procurarTela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                procurarActionPerformed(evt);
+                procurarTelaActionPerformed(evt);
             }
         });
 
-        adicionar.setText("Adicionar livro");
-        adicionar.addActionListener(new java.awt.event.ActionListener() {
+        adicionarLivroTela.setText("Adicionar livro");
+        adicionarLivroTela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                adicionarActionPerformed(evt);
+                adicionarLivroTelaActionPerformed(evt);
             }
         });
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setText("Olá! Selecione uma das opções abaixo para prosserguirmos ");
 
-        atualizar.setText("Atualizar Livro");
-        atualizar.addActionListener(new java.awt.event.ActionListener() {
+        atualizarLivroTela.setText("Atualizar Livro");
+        atualizarLivroTela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                atualizarActionPerformed(evt);
+                atualizarLivroTelaActionPerformed(evt);
             }
         });
 
-        remover.setText("Remover livro");
-        remover.addActionListener(new java.awt.event.ActionListener() {
+        removerLivroTela.setText("Remover livro");
+        removerLivroTela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removerActionPerformed(evt);
+                removerLivroTelaActionPerformed(evt);
             }
         });
 
-        emprestarlivro.setText("Emprestar livro");
-        emprestarlivro.addActionListener(new java.awt.event.ActionListener() {
+        emprestarLivroTela.setText("Emprestar livro");
+        emprestarLivroTela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emprestarlivroActionPerformed(evt);
+                emprestarLivroTelaActionPerformed(evt);
             }
         });
 
@@ -135,10 +136,10 @@ public class Iniciar extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        devolverlivro.setText("Devolver livro");
-        devolverlivro.addActionListener(new java.awt.event.ActionListener() {
+        devolverLivroTela.setText("Devolver livro");
+        devolverLivroTela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                devolverlivroActionPerformed(evt);
+                devolverLivroTelaActionPerformed(evt);
             }
         });
 
@@ -163,16 +164,16 @@ public class Iniciar extends javax.swing.JFrame {
                                 .addComponent(jLabel1)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(procurar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(emprestarlivro, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(atualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(procurarTela, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(emprestarLivroTela, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(atualizarLivroTela, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(250, 250, 250)
                                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(adicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(remover, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(devolverlivro, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(adicionarLivroTela, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(removerLivroTela, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(devolverLivroTela, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(250, 250, 250)
                                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGap(0, 0, Short.MAX_VALUE)))
@@ -188,20 +189,20 @@ public class Iniciar extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(20, 20, 20)
-                            .addComponent(procurar)
+                            .addComponent(procurarTela)
                             .addGap(7, 7, 7)
-                            .addComponent(emprestarlivro)
+                            .addComponent(emprestarLivroTela)
                             .addGap(7, 7, 7)
-                            .addComponent(atualizar))
+                            .addComponent(atualizarLivroTela))
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(7, 7, 7)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(adicionar)
+                            .addComponent(adicionarLivroTela)
                             .addGap(7, 7, 7)
-                            .addComponent(remover)
+                            .addComponent(removerLivroTela)
                             .addGap(7, 7, 7)
-                            .addComponent(devolverlivro))
+                            .addComponent(devolverLivroTela))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(10, 10, 10)
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -219,43 +220,43 @@ public class Iniciar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void procurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_procurarActionPerformed
+    private void procurarTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_procurarTelaActionPerformed
         // TODO add your handling code here:
         Procurar p = new Procurar();
         p.setVisible(true);
-    }//GEN-LAST:event_procurarActionPerformed
+    }//GEN-LAST:event_procurarTelaActionPerformed
 
-    private void adicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarActionPerformed
+    private void adicionarLivroTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarLivroTelaActionPerformed
         // TODO add your handling code here
         Adicionar a = new Adicionar();
         a.setVisible(true);
-    }//GEN-LAST:event_adicionarActionPerformed
+    }//GEN-LAST:event_adicionarLivroTelaActionPerformed
 
-    private void atualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarActionPerformed
+    private void atualizarLivroTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarLivroTelaActionPerformed
         // TODO add your handling code here:
         Atualizar a = new Atualizar();
         a.setVisible(true);
 
-    }//GEN-LAST:event_atualizarActionPerformed
+    }//GEN-LAST:event_atualizarLivroTelaActionPerformed
 
-    private void removerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerActionPerformed
+    private void removerLivroTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerLivroTelaActionPerformed
         // TODO add your handling code here:
         Remover r = new Remover();
         r.setVisible(true);
-    }//GEN-LAST:event_removerActionPerformed
+    }//GEN-LAST:event_removerLivroTelaActionPerformed
 
-    private void emprestarlivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emprestarlivroActionPerformed
+    private void emprestarLivroTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emprestarLivroTelaActionPerformed
         // TODO add your handling code here:
         DevolverEmprestimos e = new DevolverEmprestimos();
         e.setVisible(true);
 
-    }//GEN-LAST:event_emprestarlivroActionPerformed
+    }//GEN-LAST:event_emprestarLivroTelaActionPerformed
 
-    private void devolverlivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverlivroActionPerformed
+    private void devolverLivroTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverLivroTelaActionPerformed
         // TODO add your handling code here:
         DevolverEmprestimos de = new DevolverEmprestimos();
         de.setVisible(true);
-    }//GEN-LAST:event_devolverlivroActionPerformed
+    }//GEN-LAST:event_devolverLivroTelaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -288,17 +289,17 @@ public class Iniciar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton adicionar;
-    private javax.swing.JButton atualizar;
-    private javax.swing.JButton devolverlivro;
-    private javax.swing.JButton emprestarlivro;
+    private javax.swing.JButton adicionarLivroTela;
+    private javax.swing.JButton atualizarLivroTela;
+    private javax.swing.JButton devolverLivroTela;
+    private javax.swing.JButton emprestarLivroTela;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JButton procurar;
-    private javax.swing.JButton remover;
+    private javax.swing.JButton procurarTela;
+    private javax.swing.JButton removerLivroTela;
     // End of variables declaration//GEN-END:variables
 }

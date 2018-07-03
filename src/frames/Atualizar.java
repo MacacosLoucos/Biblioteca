@@ -5,6 +5,8 @@
  */
 package frames;
 
+
+import biblioteca.*;
 /**
  *
  * @author walis
@@ -16,6 +18,7 @@ public class Atualizar extends javax.swing.JFrame {
      */
     public Atualizar() {
         initComponents();
+        super.setLocationRelativeTo(null);
     }
 
     /**
@@ -51,7 +54,7 @@ public class Atualizar extends javax.swing.JFrame {
 
         jLabel11.setText("jLabel11");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Por favor preencha os campos, para que seja possível continuar");
