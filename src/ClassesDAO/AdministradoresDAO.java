@@ -13,7 +13,6 @@ import biblioteca.Usuario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -119,7 +118,7 @@ public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
 
     }
 
-    /*Metodo para cadastrar novos livros e aumotmaticamente adicina novos 
+    /*Metodo para cadastrar novos livros e automaticamente adicina novos 
     exemplares de acordo com a quantidade que foi passada*/
     @Override
     public void cadastrar(Livros l, Administrador a) {

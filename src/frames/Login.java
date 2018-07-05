@@ -5,6 +5,12 @@
  */
 package frames;
 
+import biblioteca.Administrador;
+import biblioteca.Conectar;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author walis
@@ -16,6 +22,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        super.setLocationRelativeTo(null);
     }
 
     /**
@@ -32,7 +39,7 @@ public class Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         login = new javax.swing.JTextField();
         loginSistema = new javax.swing.JButton();
-        senha = new javax.swing.JFormattedTextField();
+        senha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,6 +57,14 @@ public class Login extends javax.swing.JFrame {
         });
 
         loginSistema.setText("LOGIN");
+        loginSistema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginSistemaActionPerformed(evt);
+            }
+        });
+
+        senha.setText("jPasswordField1");
+        senha.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -102,6 +117,30 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_loginActionPerformed
 
+    private void loginSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginSistemaActionPerformed
+        // TODO add your handling code here:
+        String password = String.copyValueOf(senha.getPassword());
+        Administrador ad = new Administrador(login.getText(), password);
+        
+        PreparedStatement n = null;
+
+        String sql = "SELECT TB_PERMISSOES_PER_ID FROM TB_PESSOAS WHERE PES_LOGIN = ? AND PES_SENHA = ?;";
+
+        try {
+
+            n = Conectar.getConexao().prepareStatement(sql);
+
+            n.setString(1, ad.getLogin());
+            n.setString(2, ad.getSenha());
+            n.executeUpdate();
+            
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Não foi possível encontrar esse usuário\n" + e, "Atenção!", 2);
+        }
+        
+    }//GEN-LAST:event_loginSistemaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -130,10 +169,8 @@ public class Login extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Login().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Login().setVisible(true);
         });
     }
 
@@ -143,6 +180,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField login;
     private javax.swing.JButton loginSistema;
-    private javax.swing.JFormattedTextField senha;
+    private javax.swing.JPasswordField senha;
     // End of variables declaration//GEN-END:variables
 }
