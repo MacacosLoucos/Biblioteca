@@ -41,18 +41,18 @@
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="procurar" min="-2" pref="140" max="-2" attributes="0"/>
-                                      <Component id="emprestarlivro" min="-2" pref="140" max="-2" attributes="0"/>
-                                      <Component id="atualizar" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <Component id="procurarTela" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <Component id="emprestarLivroTela" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <Component id="atualizarLivroTela" min="-2" pref="140" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="250" pref="250" max="-2" attributes="0"/>
                                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="adicionar" min="-2" pref="140" max="-2" attributes="0"/>
-                                      <Component id="remover" min="-2" pref="140" max="-2" attributes="0"/>
-                                      <Component id="devolverlivro" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <Component id="adicionarLivroTela" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <Component id="removerLivroTela" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <Component id="devolverLivroTela" min="-2" pref="140" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="250" pref="250" max="-2" attributes="0"/>
                                   <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
@@ -76,22 +76,22 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                          <Component id="procurar" min="-2" max="-2" attributes="0"/>
+                          <Component id="procurarTela" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
-                          <Component id="emprestarlivro" min="-2" max="-2" attributes="0"/>
+                          <Component id="emprestarLivroTela" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
-                          <Component id="atualizar" min="-2" max="-2" attributes="0"/>
+                          <Component id="atualizarLivroTela" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="adicionar" min="-2" max="-2" attributes="0"/>
+                          <Component id="adicionarLivroTela" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
-                          <Component id="remover" min="-2" max="-2" attributes="0"/>
+                          <Component id="removerLivroTela" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
-                          <Component id="devolverlivro" min="-2" max="-2" attributes="0"/>
+                          <Component id="devolverLivroTela" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
@@ -116,20 +116,20 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="procurar">
+    <Component class="javax.swing.JButton" name="procurarTela">
       <Properties>
         <Property name="text" type="java.lang.String" value="Procurar Livro"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="procurarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="procurarTelaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="adicionar">
+    <Component class="javax.swing.JButton" name="adicionarLivroTela">
       <Properties>
         <Property name="text" type="java.lang.String" value="Adicionar livro"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="adicionarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="adicionarLivroTelaActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
@@ -140,28 +140,28 @@
         <Property name="text" type="java.lang.String" value="Ol&#xe1;! Selecione uma das op&#xe7;&#xf5;es abaixo para prosserguirmos "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="atualizar">
+    <Component class="javax.swing.JButton" name="atualizarLivroTela">
       <Properties>
         <Property name="text" type="java.lang.String" value="Atualizar Livro"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="atualizarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="atualizarLivroTelaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="remover">
+    <Component class="javax.swing.JButton" name="removerLivroTela">
       <Properties>
         <Property name="text" type="java.lang.String" value="Remover livro"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removerActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removerLivroTelaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="emprestarlivro">
+    <Component class="javax.swing.JButton" name="emprestarLivroTela">
       <Properties>
         <Property name="text" type="java.lang.String" value="Emprestar livro"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="emprestarlivroActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="emprestarLivroTelaActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel1">
@@ -239,12 +239,12 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Component class="javax.swing.JButton" name="devolverlivro">
+    <Component class="javax.swing.JButton" name="devolverLivroTela">
       <Properties>
         <Property name="text" type="java.lang.String" value="Devolver livro"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="devolverlivroActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="devolverLivroTelaActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

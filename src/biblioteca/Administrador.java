@@ -16,4 +16,14 @@ public class Administrador extends Pessoas{
     public Administrador(String nome, String login, String senha, int id) {
         super(nome, login, senha, id);
     }
+
+    public Administrador(String login, String senha) {
+        super(login, senha);
+    }
+    
+
+    public String getTipo() {
+        return tipo;
+    }
+    
 }

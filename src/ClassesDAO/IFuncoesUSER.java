@@ -5,10 +5,8 @@
  */
 package ClassesDAO;
 
-import biblioteca.Exemplar;
 import biblioteca.Livros;
 import biblioteca.Usuario;
-import java.util.ArrayList;
 
 /**
  *

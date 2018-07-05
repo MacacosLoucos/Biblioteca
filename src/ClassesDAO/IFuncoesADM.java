@@ -9,7 +9,6 @@ import biblioteca.Administrador;
 import biblioteca.Exemplar;
 import biblioteca.Livros;
 import biblioteca.Usuario;
-import java.util.ArrayList;
 
 /**
  *

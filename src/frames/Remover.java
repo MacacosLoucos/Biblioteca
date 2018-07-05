@@ -16,6 +16,7 @@ public class Remover extends javax.swing.JFrame {
      */
     public Remover() {
         initComponents();
+        super.setLocationRelativeTo(null);
     }
 
     /**
@@ -38,7 +39,7 @@ public class Remover extends javax.swing.JFrame {
         remover = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Por favor preencha os campos, para que seja possível continuar");
@@ -99,7 +100,7 @@ public class Remover extends javax.swing.JFrame {
                                     .addGap(18, 18, 18)
                                     .addComponent(buscar))))
                         .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
