@@ -79,9 +79,11 @@ public abstract class PessoasDAO {
 
             if (rs.next()) {
                 if (rs.getInt("per_id") == 1) {
+                    p.setNome("pes_nome");
                     a = (Administrador) p;
                     return a;
                 } else {
+                    p.setNome("pes_nome");
                     u = (Usuario) p;
                     return u;
                 }
