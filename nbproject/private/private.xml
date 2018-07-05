@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/walis/Documents/GitHub/Biblioteca/src/frames/Adicionar.java</file>
-            <file>file:/C:/Users/walis/Documents/GitHub/Biblioteca/src/frames/Procurar.java</file>
-            <file>file:/C:/Users/walis/Documents/GitHub/Biblioteca/src/frames/Iniciar.java</file>
-            <file>file:/C:/Users/walis/Documents/GitHub/Biblioteca/src/frames/Atualizar.java</file>
-            <file>file:/C:/Users/walis/Documents/GitHub/Biblioteca/src/biblioteca/Livros.java</file>
+            <file>file:/C:/Users/Usuario/Contacts/Documents/NetBeansProjects/Biblioteca/src/biblioteca/Exemplar.java</file>
+            <file>file:/C:/Users/Usuario/Contacts/Documents/NetBeansProjects/Biblioteca/src/biblioteca/Main.java</file>
+            <file>file:/C:/Users/Usuario/Contacts/Documents/NetBeansProjects/Biblioteca/src/ClassesDAO/AdministradoresDAO.java</file>
+            <file>file:/C:/Users/Usuario/Contacts/Documents/NetBeansProjects/Biblioteca/src/biblioteca/Administrador.java</file>
         </group>
     </open-files>
 </project-private>
