@@ -6,14 +6,13 @@
 package biblioteca;
 
 import ClassesDAO.AdministradoresDAO;
-import ClassesDAO.UsuarioDAO;
-import java.util.ArrayList;
+import ClassesDAO.PessoasDAO;
 
 /**
  *
- * @author Rocha
+ * @author walis
  */
-public class Main {
+public class teste {
 
     /**
      * @param args the command line arguments
@@ -21,21 +20,11 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        Conectar  c = new Conectar();
-        c.conect();
+       Administrador ad = new Administrador("WALI20", "456");
+       PessoasDAO pesDAO = new AdministradoresDAO();
+       pesDAO.tipoPessoa(ad);
+       System.out.println(ad.getTipo());
        
-        AdministradoresDAO u = new AdministradoresDAO();
-        
-        Administrador n = new Administrador("", "", "", 1);
-        
-        Livros f = new Livros();
-        f.setId(7);
-       
-       Livros l = new Livros();
-       
-       u.atualizar(l, n);
-       
-        
     }
     
 }

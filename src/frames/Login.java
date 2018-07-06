@@ -121,8 +121,8 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         String password = String.copyValueOf(senha.getPassword());
         
-        Administrador ad = new Administrador(login.getText(), password);
-        PessoasDAO adDAO = new AdministradoresDAO();
+        Administrador ad = new Administrador(login.getText().toUpperCase(), password);
+        AdministradoresDAO adDAO = new AdministradoresDAO();
         
         adDAO.tipoPessoa(ad);
         
