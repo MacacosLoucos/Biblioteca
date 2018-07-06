@@ -91,6 +91,7 @@ public abstract class PessoasDAO {
             }
 
         } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Não foi possível identificar o tipo de pessoa \n" + e, "Atenção!", 2);
         }
         return null;
     }
