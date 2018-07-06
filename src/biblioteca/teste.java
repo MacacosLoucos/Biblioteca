@@ -19,12 +19,27 @@ public class teste {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
-       Administrador ad = new Administrador("WALI20", "456");
-       PessoasDAO pesDAO = new AdministradoresDAO();
-       pesDAO.tipoPessoa(ad);
-       System.out.println(ad.getTipo());
-       
+
+        Conectar n = new Conectar();
+        n.conect();
+
+        PessoasDAO pesDAO = new PessoasDAO() {
+        };
+
+        Pessoas a = pesDAO.tipoPessoa("WALI20", "456");
+        Administrador b = null;
+        Usuario c = null;
+
+        if (a instanceof Administrador) {
+            b = (Administrador) a;
+
+        } else if (a instanceof Usuario) {
+            c = (Usuario) a;
+
+        }
+
+        System.out.println(b.getTipo());
+
     }
-    
+
 }
