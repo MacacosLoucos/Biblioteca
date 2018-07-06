@@ -132,7 +132,7 @@ public class Login extends javax.swing.JFrame {
 
             n.setString(1, ad.getLogin());
             n.setString(2, ad.getSenha());
-            n.executeUpdate();
+            n.execute();
             
 
         } catch (SQLException e) {
