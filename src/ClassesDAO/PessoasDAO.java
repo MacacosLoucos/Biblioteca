@@ -61,7 +61,7 @@ public abstract class PessoasDAO {
         Usuario u = null;
 
         String sql = "SELECT * FROM tb_pessoas p INNER JOIN tb_permissoes e ON"
-                + "(p.permissoes_per_id = e.per_id) WHERE p.pes_login = ? AND"
+                + "(p.tb_permissoes_per_id = e.per_id) WHERE p.pes_login = ? AND"
                 + "p.pes_senha = ?;";
 
         try {
