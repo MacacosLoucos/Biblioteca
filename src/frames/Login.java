@@ -6,10 +6,10 @@
 package frames;
 
 import biblioteca.Administrador;
-import biblioteca.Conectar;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import ClassesDAO.AdministradoresDAO;
+import ClassesDAO.PessoasDAO;
+import biblioteca.Pessoas;
 
 /**
  *
@@ -120,23 +120,20 @@ public class Login extends javax.swing.JFrame {
     private void loginSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginSistemaActionPerformed
         // TODO add your handling code here:
         String password = String.copyValueOf(senha.getPassword());
-        Administrador ad = new Administrador(login.getText(), password);
         
-        PreparedStatement n = null;
-
-        String sql = "SELECT TB_PERMISSOES_PER_ID FROM TB_PESSOAS WHERE PES_LOGIN = ? AND PES_SENHA = ?;";
-
-        try {
-
-            n = Conectar.getConexao().prepareStatement(sql);
-
-            n.setString(1, ad.getLogin());
-            n.setString(2, ad.getSenha());
-            n.execute();
-            
-
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Não foi possível encontrar esse usuário\n" + e, "Atenção!", 2);
+        Administrador ad = new Administrador(login.getText(), password);
+        PessoasDAO adDAO = new AdministradoresDAO();
+        
+        adDAO.tipoPessoa(ad);
+        
+        JOptionPane.showInputDialog(ad.getTipo());
+        
+        if(ad.getTipo().equals("ADM")) {
+            Iniciar i = new Iniciar();
+            i.setVisible(true);
+        } else {
+            TelaUsuario tu = new TelaUsuario();
+            tu.setVisible(true);
         }
         
     }//GEN-LAST:event_loginSistemaActionPerformed
