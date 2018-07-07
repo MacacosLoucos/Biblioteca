@@ -53,7 +53,7 @@ public abstract class PessoasDAO {
         return l;
     }
 
-    public Pessoas tipoPessoa(String login, String senha) {
+    public static Pessoas tipoPessoa(String login, String senha) {
 
         PreparedStatement n = null;
 
