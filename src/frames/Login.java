@@ -121,20 +121,11 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         String password = String.copyValueOf(senha.getPassword());
         
-        Administrador ad = new Administrador(login.getText().toUpperCase(), password);
+        Administrador ad = new Administrador();
         AdministradoresDAO adDAO = new AdministradoresDAO();
         
-        adDAO.tipoPessoa(ad);
+        adDAO.tipoPessoa(login.getText().toUpperCase(), password);
         
-        JOptionPane.showInputDialog(ad.getTipo());
-        
-        if(ad.getTipo().equals("ADM")) {
-            Iniciar i = new Iniciar();
-            i.setVisible(true);
-        } else {
-            TelaUsuario tu = new TelaUsuario();
-            tu.setVisible(true);
-        }
         
     }//GEN-LAST:event_loginSistemaActionPerformed
 
