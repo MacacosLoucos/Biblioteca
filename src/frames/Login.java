@@ -9,7 +9,9 @@ import biblioteca.Administrador;
 import javax.swing.JOptionPane;
 import ClassesDAO.AdministradoresDAO;
 import ClassesDAO.PessoasDAO;
+import biblioteca.Conectar;
 import biblioteca.Pessoas;
+import biblioteca.Usuario;
 
 /**
  *
@@ -23,6 +25,8 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         super.setLocationRelativeTo(null);
+        Conectar n = new Conectar();
+        n.conect();
     }
 
     /**
@@ -63,7 +67,6 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        senha.setText("jPasswordField1");
         senha.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -120,13 +123,43 @@ public class Login extends javax.swing.JFrame {
     private void loginSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginSistemaActionPerformed
         // TODO add your handling code here:
         String password = String.copyValueOf(senha.getPassword());
+        String log = login.getText();
+
+        Pessoas pessoa = PessoasDAO.tipoPessoa(log.toUpperCase(), password);
+
+        Administrador adm = null;
+        Usuario user = null;
+
+        if (pessoa instanceof Administrador) {
+            adm = (Administrador) pessoa;
+        } else if(pessoa instanceof Usuario){
+            user = (Usuario) pessoa;
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuario inexistente");
+            senha.setText("");
+            login.setText("");
+            return;
+        }
         
+<<<<<<< HEAD
         Administrador ad = new Administrador();
         AdministradoresDAO adDAO = new AdministradoresDAO();
         
         adDAO.tipoPessoa(login.getText().toUpperCase(), password);
         
         
+=======
+        if(adm != null){
+            Iniciar i = new Iniciar(adm);
+            i.setVisible(true);
+            this.dispose();
+        } else {
+            TelaUsuario u = new TelaUsuario(user);
+            u.setVisible(true);
+            this.dispose();
+        }
+
+>>>>>>> 781ea0e7873dacef63ac794af112abb1f40a82ff
     }//GEN-LAST:event_loginSistemaActionPerformed
 
     /**
