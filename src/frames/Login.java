@@ -141,11 +141,6 @@ public class Login extends javax.swing.JFrame {
             return;
         }
         
-        AdministradoresDAO adDAO = new AdministradoresDAO();
-        
-        adDAO.tipoPessoa(login.getText().toUpperCase(), password);
-        
-        
         if(adm != null){
             TelaADM i = new TelaADM(adm);
             i.setVisible(true);

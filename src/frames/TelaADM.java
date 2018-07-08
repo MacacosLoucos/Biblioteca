@@ -178,8 +178,9 @@ public class TelaADM extends javax.swing.JFrame {
 
     private void emprestarLivroTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emprestarLivroTelaActionPerformed
         // TODO add your handling code here:
-        DevolverEmprestimos e = new DevolverEmprestimos();
-        e.setVisible(true);
+        RealizarEmprestimo re = new RealizarEmprestimo();
+        re.setVisible(true);       
+        
     }//GEN-LAST:event_emprestarLivroTelaActionPerformed
 
     private void devolverLivroTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverLivroTelaActionPerformed

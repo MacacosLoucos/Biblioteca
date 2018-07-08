@@ -27,6 +27,10 @@ public abstract class Pessoas {
         this.login = login;
         this.senha = senha;
     }
+    
+    public Pessoas(int id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;

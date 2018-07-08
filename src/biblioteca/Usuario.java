@@ -17,4 +17,8 @@ public class Usuario extends Pessoas{
         super(nome, login, senha, id);
     }
     
+    public Usuario(int id){
+        super(id);
+    }
+    
 }

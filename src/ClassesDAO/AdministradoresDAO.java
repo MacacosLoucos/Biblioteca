@@ -281,5 +281,31 @@ public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
         }
         return busca;
     }
+    
+    public Usuario procurarUsuario(Usuario u) {
+        
+        PreparedStatement n = null;
+        
+        Usuario busca = null;
+        
+        String sql = "SELECT * FROM TB_PESSOAS WHERE PES_ID = ?;";
+        
+        try {
+            n = Conectar.getConexao().prepareStatement(sql);
+            
+            n.setString(1, Integer.toString(u.getId()));
+            
+            ResultSet rs = n.executeQuery();
+            
+            if(rs.next()){
+               busca = new Usuario(rs.getString("pes_nome"), rs.getString("pes_login"),
+                       rs.getString("pes_senha"), Integer.parseInt(rs.getString("pes_id")));
+            }
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Não foi possível encontrar a pessoa\n" + e, "Atenção!", 2);
+        }
+        return busca;
+    }
 
 }

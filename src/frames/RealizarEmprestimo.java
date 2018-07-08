@@ -8,6 +8,8 @@ package frames;
 import biblioteca.Administrador;
 import biblioteca.Conectar;
 import ClassesDAO.AdministradoresDAO;
+import biblioteca.Exemplar;
+import biblioteca.Usuario;
 /**
  *
  * @author walis
@@ -16,19 +18,14 @@ public class RealizarEmprestimo extends javax.swing.JFrame {
 
     /**
      * Creates new form RealizarEmprestimo
-     * @param adm
      */
-    public RealizarEmprestimo(Administrador adm) {
+    public RealizarEmprestimo() {
         initComponents();
         super.setLocationRelativeTo(null);
-        Conectar n = new Conectar();
-        AdministradoresDAO adDAO = new AdministradoresDAO();
-        
-        for (int i=0; i<;i++) {
-            listaLivro.add(this)
-        }
+        Conectar n = new Conectar();        
     }
 
+    AdministradoresDAO adDAO = new AdministradoresDAO();
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,74 +37,162 @@ public class RealizarEmprestimo extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        listaLivro = new javax.swing.JList<>();
-        codigoLivro = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        emprestar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        numeroExemplar = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        idUsuario = new javax.swing.JTextField();
+        verificarDados = new javax.swing.JButton();
+        jLabeLNomeLivro = new javax.swing.JLabel();
+        jLabelAutorLivro = new javax.swing.JLabel();
+        jLabelNumeroExemplar = new javax.swing.JLabel();
+        jLabelNomeUsuario = new javax.swing.JLabel();
+        jLabelIdUsuario = new javax.swing.JLabel();
+        emprestarLivro = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Emprestimos");
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel1.setText("Por favor, digite o codigo do livro");
+        jLabel1.setText("Por favor, digite o numero do exemplar e codigo do usuario");
 
-        jScrollPane2.setViewportView(listaLivro);
+        jLabel3.setText("Numero do Exemplar");
 
-        jLabel2.setFont(new java.awt.Font("HP Simplified", 1, 14)); // NOI18N
-        jLabel2.setText("Codigo do Livro:");
+        jLabel4.setText("Id do Usuario");
 
-        emprestar.setText("Emprestar");
+        verificarDados.setText("Verificar Dados");
+        verificarDados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verificarDadosActionPerformed(evt);
+            }
+        });
+
+        jLabeLNomeLivro.setFont(new java.awt.Font("HP Simplified", 0, 14)); // NOI18N
+        jLabeLNomeLivro.setText("NOME DO LIVRO");
+
+        jLabelAutorLivro.setFont(new java.awt.Font("HP Simplified", 0, 14)); // NOI18N
+        jLabelAutorLivro.setText("AUTOR DO LIVRO");
+
+        jLabelNumeroExemplar.setFont(new java.awt.Font("HP Simplified", 0, 14)); // NOI18N
+        jLabelNumeroExemplar.setText("NUMERO DO EXEMPLAR");
+
+        jLabelNomeUsuario.setFont(new java.awt.Font("HP Simplified", 0, 14)); // NOI18N
+        jLabelNomeUsuario.setText("NOME DO USUARIO");
+
+        jLabelIdUsuario.setFont(new java.awt.Font("HP Simplified", 0, 14)); // NOI18N
+        jLabelIdUsuario.setText("ID DO USUARIO");
+
+        emprestarLivro.setText("Emprestar");
+        emprestarLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emprestarLivroActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Cancelar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(145, Short.MAX_VALUE)
+                .addContainerGap(47, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(136, 136, 136))
+                        .addComponent(jLabel1)
+                        .addGap(30, 30, 30))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(codigoLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(emprestar))
-                        .addGap(70, 70, 70))))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(69, 69, 69)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2))
-                    .addContainerGap(69, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabeLNomeLivro)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel4)
+                                            .addComponent(jLabel3))
+                                        .addComponent(jLabelAutorLivro))
+                                    .addGap(33, 33, 33)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(numeroExemplar)
+                                        .addComponent(idUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabelNumeroExemplar)
+                                .addComponent(jLabelNomeUsuario)
+                                .addComponent(jLabelIdUsuario)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(verificarDados, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(emprestarLivro))
+                        .addGap(105, 105, 105))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel1)
-                .addGap(36, 36, 36)
-                .addComponent(codigoLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 263, Short.MAX_VALUE)
-                .addComponent(emprestar)
-                .addGap(44, 44, 44))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(87, 87, 87)
-                    .addComponent(jLabel2)
-                    .addGap(18, 18, 18)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-                    .addGap(88, 88, 88)))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(numeroExemplar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(idUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(verificarDados)
+                .addGap(18, 18, 18)
+                .addComponent(jLabeLNomeLivro)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelAutorLivro)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelNumeroExemplar)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelNomeUsuario)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelIdUsuario)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(emprestarLivro)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void emprestarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emprestarLivroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emprestarLivroActionPerformed
+
+    private void verificarDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verificarDadosActionPerformed
+        // TODO add your handling code here:
+        Exemplar exe = new Exemplar(numeroExemplar.getText());
+        Usuario user = new Usuario(Integer.parseInt(idUsuario.getText()));
+        
+        exe = adDAO.procurarExemplar(exe);
+        user = adDAO.procurarUsuario(user);
+        
+        jLabeLNomeLivro.setText(exe.getTitulo());
+        jLabelAutorLivro.setText(exe.getAutor());
+        jLabelNumeroExemplar.setText(exe.getNumero());
+        jLabelIdUsuario.setText(Integer.toString(user.getId()));
+        jLabelNomeUsuario.setText(user.getNome());
+        
+        
+        
+    }//GEN-LAST:event_verificarDadosActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField codigoLivro;
-    private javax.swing.JButton emprestar;
+    private javax.swing.JButton emprestarLivro;
+    private javax.swing.JTextField idUsuario;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabeLNomeLivro;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JList<String> listaLivro;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabelAutorLivro;
+    private javax.swing.JLabel jLabelIdUsuario;
+    private javax.swing.JLabel jLabelNomeUsuario;
+    private javax.swing.JLabel jLabelNumeroExemplar;
+    private javax.swing.JTextField numeroExemplar;
+    private javax.swing.JButton verificarDados;
     // End of variables declaration//GEN-END:variables
 }
