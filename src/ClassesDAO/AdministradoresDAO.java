@@ -254,4 +254,32 @@ public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
         this.alterarDisponibilidade(x);
     }
 
+    @Override
+    public Exemplar procurarExemplar(Exemplar l) {
+        
+        PreparedStatement n = null;
+        
+        Exemplar busca = null;
+        
+        String sql = "SELECT * FROM tb_exemplar e INNER JOIN tb_livro l ON "
+                + "(e.tb_livros_liv_id = l.liv_id) WHERE e.exe_numero = ?;";
+        
+        try {
+            n = Conectar.getConexao().prepareStatement(sql);
+            
+            n.setString(1, l.getNumero());
+            
+            ResultSet rs = n.executeQuery();
+            
+            if(rs.next()){
+               busca = new Exemplar(rs.getString("exe_numero"), rs.getString("liv_titulo"), rs.getString("liv_autor"),
+                       rs.getString("liv_editora"), rs.getString("liv_area"), rs.getInt("liv_quantidade"));
+            }
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Não foi possível procurar exemplar \n" + e, "Atenção!", 2);
+        }
+        return busca;
+    }
+
 }

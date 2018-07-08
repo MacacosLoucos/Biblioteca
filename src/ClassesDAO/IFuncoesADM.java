@@ -21,4 +21,5 @@ public interface IFuncoesADM {
     void deletar(Livros l, Administrador a);
     void emprestar(Exemplar l, Usuario u);
     void devolverLivro(Exemplar x, Usuario u);
+    Exemplar procurarExemplar(Exemplar l);
 }
