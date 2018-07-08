@@ -48,9 +48,6 @@ public class Livros {
     public Livros() {
     }
     
-    
-
-    
     public String getTitulo() {
         return titulo;
     }

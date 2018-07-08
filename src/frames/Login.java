@@ -141,16 +141,13 @@ public class Login extends javax.swing.JFrame {
             return;
         }
         
-<<<<<<< HEAD
-        Administrador ad = new Administrador();
         AdministradoresDAO adDAO = new AdministradoresDAO();
         
         adDAO.tipoPessoa(login.getText().toUpperCase(), password);
         
         
-=======
         if(adm != null){
-            Iniciar i = new Iniciar(adm);
+            TelaADM i = new TelaADM(adm);
             i.setVisible(true);
             this.dispose();
         } else {
@@ -158,8 +155,6 @@ public class Login extends javax.swing.JFrame {
             u.setVisible(true);
             this.dispose();
         }
-
->>>>>>> 781ea0e7873dacef63ac794af112abb1f40a82ff
     }//GEN-LAST:event_loginSistemaActionPerformed
 
     /**
