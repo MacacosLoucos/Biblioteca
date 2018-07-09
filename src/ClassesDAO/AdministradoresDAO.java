@@ -261,7 +261,7 @@ public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
         
         Exemplar busca = null;
         
-        String sql = "SELECT * FROM tb_exemplar e INNER JOIN tb_livro l ON "
+        String sql = "SELECT * FROM tb_exemplar e INNER JOIN tb_livros l ON "
                 + "(e.tb_livros_liv_id = l.liv_id) WHERE e.exe_numero = ?;";
         
         try {
@@ -288,18 +288,18 @@ public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
         
         Usuario busca = null;
         
-        String sql = "SELECT * FROM TB_PESSOAS WHERE PES_ID = ?;";
+        String sql = "SELECT * FROM tb_pessoas WHERE pes_id = ?;";
         
         try {
             n = Conectar.getConexao().prepareStatement(sql);
             
-            n.setString(1, Integer.toString(u.getId()));
+            n.setInt(1, u.getId());
             
             ResultSet rs = n.executeQuery();
             
             if(rs.next()){
                busca = new Usuario(rs.getString("pes_nome"), rs.getString("pes_login"),
-                       rs.getString("pes_senha"), Integer.parseInt(rs.getString("pes_id")));
+                       rs.getString("pes_senha"), rs.getInt("pes_id"));
             }
             
         } catch (SQLException e) {
