@@ -16,18 +16,16 @@ public class AdicionarLivro extends javax.swing.JFrame {
 
     /**
      * Creates new form Adicionar
+     *
+     * @param adm
      */
     public AdicionarLivro(Administrador adm) {
         initComponents();
         super.setLocationRelativeTo(null);
-        titulo.setText("");
-        autor.setText("");
-        area.setText("");
-        editora.setText("");
-        quantidade.setText("");
+        this.zerarCampos();
         this.adm = adm;
     }
-    
+
     Administrador adm;
 
     /**
@@ -148,13 +146,22 @@ public class AdicionarLivro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void zerarCampos() {
+        titulo.setText("");
+        autor.setText("");
+        area.setText("");
+        editora.setText("");
+        quantidade.setText("");
+    }
+
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
         // TODO add your handling code here:
-        Livros liv = new Livros(titulo.getText(), autor.getText(), editora.getName(),
+        Livros liv = new Livros(titulo.getText(), autor.getText(), editora.getText(),
                 area.getText(), Integer.parseInt(quantidade.getText()));
         AdministradoresDAO admDAO = new AdministradoresDAO();
-        
+
         admDAO.cadastrarLivro(liv, adm);
+        this.zerarCampos();
     }//GEN-LAST:event_cadastrarActionPerformed
 
     private void quantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quantidadeActionPerformed

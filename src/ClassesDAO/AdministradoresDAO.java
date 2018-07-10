@@ -10,9 +10,12 @@ import biblioteca.Conectar;
 import biblioteca.Exemplar;
 import biblioteca.Livros;
 import biblioteca.Usuario;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 
 /**
@@ -59,6 +62,12 @@ public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Não foi possível excluir os livros \n" + e, "Atenção!", 2);
         }
+    }
+
+    private String getDateTime() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        Date date = new Date();
+        return dateFormat.format(date);
     }
 
     /*Método para Adicionar exemplares de livros*/
@@ -120,12 +129,13 @@ public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
 
     /*Metodo para cadastrar novos livros e automaticamente adicina novos 
     exemplares de acordo com a quantidade que foi passada*/
-    public void cadastrarLivro (Livros l, Administrador a) {
+    @Override
+    public void cadastrarLivro(Livros l, Administrador a) {
         PreparedStatement n = null;
 
         String sql = "INSERT INTO tb_livros (liv_titulo, liv_autor, liv_area, "
                 + "liv_editora, liv_data_cadastro, liv_data_atualizacao, "
-                + "liv_quantidade, tb_pessoas_pes_id) VALUES (?, ?, ?, ?, NOW(), NOW(), ?, ?);";
+                + "liv_quantidade, tb_pessoas_pes_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
 
         try {
 
@@ -135,18 +145,18 @@ public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
             n.setString(2, l.getAutor());
             n.setString(3, l.getArea());
             n.setString(4, l.getEditora());
-            n.setInt(5, l.getQuantidade());
-            n.setInt(6, a.getId());
+            n.setString(5, this.getDateTime());
+            n.setString(6, this.getDateTime());
+            n.setInt(7, l.getQuantidade());
+            n.setInt(8, a.getId());
 
             n.execute();
-            JOptionPane.showMessageDialog(null, "O livro "+l.getTitulo()+" não pode ser cadastrado");
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Não foi possível cadastrar um novo livro \n" + e, "Atenção!", 2);
         }
-
+        
         this.adicionarExemplares(l);
-
     }
 
     /*Metodo para modificar algum atributo do livro que pode ter sido passado errado,
@@ -167,8 +177,9 @@ public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
             n.setString(3, l.getArea());
             n.setString(4, l.getEditora());
             n.setInt(5, l.getQuantidade());
-            n.setInt(6, a.getId());
-            n.setInt(7, l.getId());
+            n.setString(6, this.getDateTime());
+            n.setInt(7, a.getId());
+            n.setInt(8, l.getId());
 
             n.executeUpdate();
 
@@ -221,7 +232,7 @@ public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
             n.setString(2, l.getNumero());
             n.execute();
             this.alterarDisponibilidade(l);
-            JOptionPane.showMessageDialog(null, "O exemplar "+l.getTitulo()+" foi emprestado para "+u.getNome());
+            JOptionPane.showMessageDialog(null, "O exemplar " + l.getTitulo() + " foi emprestado para " + u.getNome());
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Não foi possível realizar emprestimos \n" + e, "Atenção!", 2);
@@ -257,52 +268,52 @@ public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
 
     @Override
     public Exemplar procurarExemplar(Exemplar l) {
-        
+
         PreparedStatement n = null;
-        
+
         Exemplar busca = null;
-        
+
         String sql = "SELECT * FROM tb_exemplar e INNER JOIN tb_livros l ON "
                 + "(e.tb_livros_liv_id = l.liv_id) WHERE e.exe_numero = ?;";
-        
+
         try {
             n = Conectar.getConexao().prepareStatement(sql);
-            
+
             n.setString(1, l.getNumero());
-            
+
             ResultSet rs = n.executeQuery();
-            
-            if(rs.next()){
-               busca = new Exemplar(rs.getString("exe_numero"), rs.getString("liv_titulo"), rs.getString("liv_autor"),
-                       rs.getString("liv_editora"), rs.getString("liv_area"), rs.getInt("liv_quantidade"));
+
+            if (rs.next()) {
+                busca = new Exemplar(rs.getString("exe_numero"), rs.getString("liv_titulo"), rs.getString("liv_autor"),
+                        rs.getString("liv_editora"), rs.getString("liv_area"), rs.getInt("liv_quantidade"));
             }
-            
+
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Não foi possível procurar exemplar \n" + e, "Atenção!", 2);
         }
         return busca;
     }
-    
+
     public Usuario procurarUsuario(Usuario u) {
-        
+
         PreparedStatement n = null;
-        
+
         Usuario busca = null;
-        
+
         String sql = "SELECT * FROM tb_pessoas WHERE pes_id = ?;";
-        
+
         try {
             n = Conectar.getConexao().prepareStatement(sql);
-            
+
             n.setInt(1, u.getId());
-            
+
             ResultSet rs = n.executeQuery();
-            
-            if(rs.next()){
-               busca = new Usuario(rs.getString("pes_nome"), rs.getString("pes_login"),
-                       rs.getString("pes_senha"), rs.getInt("pes_id"));
+
+            if (rs.next()) {
+                busca = new Usuario(rs.getString("pes_nome"), rs.getString("pes_login"),
+                        rs.getString("pes_senha"), rs.getInt("pes_id"));
             }
-            
+
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Não foi possível encontrar a pessoa\n" + e, "Atenção!", 2);
         }
