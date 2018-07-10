@@ -26,6 +26,8 @@ public class RealizarEmprestimo extends javax.swing.JFrame {
     }
 
     AdministradoresDAO adDAO = new AdministradoresDAO();
+    Exemplar exe; 
+    Usuario user;
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,7 +50,7 @@ public class RealizarEmprestimo extends javax.swing.JFrame {
         jLabelNomeUsuario = new javax.swing.JLabel();
         jLabelIdUsuario = new javax.swing.JLabel();
         emprestarLivro = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Emprestimos");
@@ -89,7 +91,12 @@ public class RealizarEmprestimo extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Cancelar");
+        cancelar.setText("Cancelar");
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -118,7 +125,7 @@ public class RealizarEmprestimo extends javax.swing.JFrame {
                                 .addComponent(jLabelNumeroExemplar)
                                 .addComponent(jLabelNomeUsuario)
                                 .addComponent(jLabelIdUsuario)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(verificarDados, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(emprestarLivro))
                         .addGap(105, 105, 105))))
@@ -149,7 +156,7 @@ public class RealizarEmprestimo extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabelIdUsuario)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(cancelar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(emprestarLivro)
                 .addContainerGap(22, Short.MAX_VALUE))
@@ -160,12 +167,19 @@ public class RealizarEmprestimo extends javax.swing.JFrame {
 
     private void emprestarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emprestarLivroActionPerformed
         // TODO add your handling code here:
+        user = new Usuario(Integer.parseInt(jLabelIdUsuario.getText()));
+        exe = new Exemplar(jLabelNumeroExemplar.getText());
+        exe = adDAO.procurarExemplar(exe);
+        user = adDAO.procurarUsuario(user);
+        
+        adDAO.emprestar(exe, user);
+        
     }//GEN-LAST:event_emprestarLivroActionPerformed
 
     private void verificarDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verificarDadosActionPerformed
         // TODO add your handling code here:
-        Exemplar exe = new Exemplar(numeroExemplar.getText());
-        Usuario user = new Usuario(Integer.parseInt(idUsuario.getText()));
+        exe = new Exemplar(numeroExemplar.getText());
+        user = new Usuario(Integer.parseInt(idUsuario.getText()));
         
         exe = adDAO.procurarExemplar(exe);
         user = adDAO.procurarUsuario(user);
@@ -176,14 +190,26 @@ public class RealizarEmprestimo extends javax.swing.JFrame {
         jLabelIdUsuario.setText(Integer.toString(user.getId()));
         jLabelNomeUsuario.setText(user.getNome());
         
-        
-        
     }//GEN-LAST:event_verificarDadosActionPerformed
 
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+        // TODO add your handling code here:
+        exe = null; 
+        
+        numeroExemplar.setText("");
+        idUsuario.setText("");
+        jLabeLNomeLivro.setText("Nome do livro");
+        jLabelAutorLivro.setText("Autor do livro");
+        jLabelNumeroExemplar.setText("Numero do Exemplar");
+        jLabelNomeUsuario.setText("Nome do usuario");
+        jLabelIdUsuario.setText("Id do usuario");
+        
+    }//GEN-LAST:event_cancelarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancelar;
     private javax.swing.JButton emprestarLivro;
     private javax.swing.JTextField idUsuario;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabeLNomeLivro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;

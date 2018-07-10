@@ -97,7 +97,7 @@ public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
     }
 
     /*Método para alterar a disponibilidade de um exemplar quando ele for emprestado*/
-    private void alterarDisponibilidade(Exemplar x) {
+    public void alterarDisponibilidade(Exemplar x) {
 
         PreparedStatement n = null;
 
@@ -120,8 +120,7 @@ public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
 
     /*Metodo para cadastrar novos livros e automaticamente adicina novos 
     exemplares de acordo com a quantidade que foi passada*/
-    @Override
-    public void cadastrar(Livros l, Administrador a) {
+    public void cadastrarLivro (Livros l, Administrador a) {
         PreparedStatement n = null;
 
         String sql = "INSERT INTO tb_livros (liv_titulo, liv_autor, liv_area, "
@@ -140,6 +139,7 @@ public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
             n.setInt(6, a.getId());
 
             n.execute();
+            JOptionPane.showMessageDialog(null, "O livro "+l.getTitulo()+" não pode ser cadastrado");
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Não foi possível cadastrar um novo livro \n" + e, "Atenção!", 2);
@@ -221,6 +221,7 @@ public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
             n.setString(2, l.getNumero());
             n.execute();
             this.alterarDisponibilidade(l);
+            JOptionPane.showMessageDialog(null, "O exemplar "+l.getTitulo()+" foi emprestado para "+u.getNome());
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Não foi possível realizar emprestimos \n" + e, "Atenção!", 2);

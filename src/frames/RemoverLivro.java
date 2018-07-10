@@ -9,12 +9,12 @@ package frames;
  *
  * @author walis
  */
-public class Remover extends javax.swing.JFrame {
+public class RemoverLivro extends javax.swing.JFrame {
 
     /**
      * Creates new form Remover
      */
-    public Remover() {
+    public RemoverLivro() {
         initComponents();
         super.setLocationRelativeTo(null);
     }
@@ -67,6 +67,11 @@ public class Remover extends javax.swing.JFrame {
 
         buscar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         buscar.setText("Buscar");
+        buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarActionPerformed(evt);
+            }
+        });
 
         remover.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         remover.setText("Remover livro");
@@ -137,6 +142,13 @@ public class Remover extends javax.swing.JFrame {
     private void removerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_removerActionPerformed
+
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_buscarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel arealabel;
     private javax.swing.JLabel autorlabel;

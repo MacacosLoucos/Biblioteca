@@ -16,7 +16,7 @@ import biblioteca.Usuario;
  */
 public interface IFuncoesADM {
     
-    void cadastrar(Livros l, Administrador a);
+    void cadastrarLivro(Livros l, Administrador a);
     void atualizar(Livros l, Administrador a);
     void deletar(Livros l, Administrador a);
     void emprestar(Exemplar l, Usuario u);

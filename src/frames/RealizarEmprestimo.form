@@ -52,7 +52,7 @@
                               <Component id="jLabelNumeroExemplar" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelNomeUsuario" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelIdUsuario" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton1" alignment="0" min="-2" pref="331" max="-2" attributes="0"/>
+                              <Component id="cancelar" alignment="0" min="-2" pref="331" max="-2" attributes="0"/>
                           </Group>
                           <Component id="verificarDados" alignment="0" min="-2" pref="331" max="-2" attributes="0"/>
                           <Component id="emprestarLivro" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -91,7 +91,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jLabelIdUsuario" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="cancelar" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="emprestarLivro" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="22" max="32767" attributes="0"/>
@@ -178,10 +178,13 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="emprestarLivroActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="cancelar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
