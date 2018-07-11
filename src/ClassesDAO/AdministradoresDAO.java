@@ -50,7 +50,7 @@ public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
 
         PreparedStatement n = null;
 
-        String sql = "DELETE FROM tb_exemplar WHERE exe_numero LIKE ?%;";
+        String sql = "DELETE FROM tb_exemplar WHERE exe_numero LIKE ?;";
 
         try {
             n = Conectar.getConexao().prepareStatement(sql);
