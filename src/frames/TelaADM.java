@@ -204,7 +204,7 @@ public class TelaADM extends javax.swing.JFrame {
 
     private void atualizarLivroTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarLivroTelaActionPerformed
         // TODO add your handling code here:
-        Atualizar a = new Atualizar();
+        Atualizar a = new Atualizar(adm);
         a.setVisible(true);
     }//GEN-LAST:event_atualizarLivroTelaActionPerformed
 
