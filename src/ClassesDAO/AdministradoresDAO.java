@@ -166,7 +166,7 @@ public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
         PreparedStatement n = null;
 
         String sql = "UPDATE tb_livros SET liv_titulo = ?, liv_autor = ?,"
-                + "liv_area = ?, liv_editora = ?, liv_quantidade = ?, liv_data_atualizacao = NOW(),"
+                + "liv_area = ?, liv_editora = ?, liv_quantidade = ?, liv_data_atualizacao = ?,"
                 + "tb_pessoas_pes_id = ? WHERE liv_id = ?;";
 
         try {
