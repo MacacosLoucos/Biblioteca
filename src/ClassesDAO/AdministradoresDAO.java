@@ -25,7 +25,7 @@ import javax.swing.JOptionPane;
 public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
 
     /*Método para procurar o ultimo livro cadastrado para adicinar seus exemplares*/
-    private int ultimoIdLivro() {
+    public int ultimoIdLivro() {
         PreparedStatement n = null;
         String sql = "SELECT max(liv_id) as id FROM tb_livros;";
         int valorID = 0;
@@ -50,7 +50,7 @@ public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
 
         PreparedStatement n = null;
 
-        String sql = "DELETE FROM tb_exemplar WHERE exe_numero LIKE ?;";
+        String sql = "DELETE FROM tb_exemplar WHERE tb_livros_liv_id = ?;";
 
         try {
             n = Conectar.getConexao().prepareStatement(sql);
@@ -317,6 +317,38 @@ public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Não foi possível encontrar a pessoa\n" + e, "Atenção!", 2);
         }
+        return busca;
+    }
+    
+    public Livros procurarLivro(Livros liv) {
+
+        PreparedStatement n = null;
+
+        Livros busca = null;
+
+        String sql = "SELECT * FROM tb_livros WHERE liv_id = ?;";
+
+        try {
+            n = Conectar.getConexao().prepareStatement(sql);
+
+            n.setInt(1, liv.getId());
+
+            ResultSet rs = n.executeQuery();
+
+            if (rs.next()) {
+                
+                busca = new Livros(rs.getString("liv_titulo"), rs.getString("liv autor"),
+                        rs.getString("liv_editora"), rs.getString("liv_area"),
+                        rs.getInt("liv_id"), rs.getInt("tb_pessoas_pes_id"),
+                        rs.getString("liv_data_atualizacao"), rs.getString("liv_data_cadastro"),
+                        rs.getInt("liv_quantidade"), rs.getInt("liv_estado"));
+                
+            }
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Não foi possível encontrar a pessoa\n" + e, "Atenção!", 2);
+        }
+        
         return busca;
     }
 

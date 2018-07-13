@@ -192,8 +192,9 @@ public class TelaADM extends javax.swing.JFrame {
 
     private void procurarTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_procurarTelaActionPerformed
         // TODO add your handling code here:
-        Procurar p = new Procurar();
+        Procurar p = new Procurar(adm);
         p.setVisible(true);
+        
     }//GEN-LAST:event_procurarTelaActionPerformed
 
     private void adicionarLivroTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarLivroTelaActionPerformed

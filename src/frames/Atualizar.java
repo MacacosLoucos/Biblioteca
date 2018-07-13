@@ -5,11 +5,11 @@
  */
 package frames;
 
-
 import ClassesDAO.AdministradoresDAO;
 import biblioteca.*;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.OptionPaneUI;
+
 /**
  *
  * @author walis
@@ -24,7 +24,7 @@ public class Atualizar extends javax.swing.JFrame {
         super.setLocationRelativeTo(null);
         this.adm = adm;
     }
-    
+
     Administrador adm;
     AdministradoresDAO adDAO = new AdministradoresDAO();
     Livros liv;
@@ -280,20 +280,20 @@ public class Atualizar extends javax.swing.JFrame {
     private void removerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerActionPerformed
         // TODO add your handling code here:
         adDAO.deletar(liv, adm);
-        JOptionPane.showMessageDialog(null, "Livro "+ liv.getTitulo()+" removido"
+        JOptionPane.showMessageDialog(null, "Livro " + liv.getTitulo() + " removido"
                 + ", não é possível mais emprestar");
     }//GEN-LAST:event_removerActionPerformed
 
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
         // TODO add your handling code here:
-        Livros l = new Exemplar(idLivro.getText()+"A");
+        Livros l = new Exemplar(idLivro.getText() + "A");
         l = adDAO.procurarExemplar((Exemplar) l);
-        
+
         titulolabel.setText(l.getTitulo());
         arealabel.setText(l.getArea());
         autorlabel.setText(l.getAutor());
         editoralabel.setText(l.getEditora());
-        quantidadeLabel.setText(""+l.getQuantidade());
+        quantidadeLabel.setText("" + l.getQuantidade());
         dataCadastro.setText(l.getData_de_cadastro());
         liv = l;
         liv.setId(Integer.parseInt(idLivro.getText()));
@@ -301,8 +301,8 @@ public class Atualizar extends javax.swing.JFrame {
         autor.setText(liv.getAutor());
         area.setText(liv.getArea());
         editora.setText(liv.getEditora());
-        quantidade.setText(liv.getQuantidade()+"");
-        
+        quantidade.setText(liv.getQuantidade() + "");
+
     }//GEN-LAST:event_buscarActionPerformed
 
     private void atualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarActionPerformed
@@ -314,7 +314,7 @@ public class Atualizar extends javax.swing.JFrame {
         liv.setQuantidade(Integer.parseInt(quantidade.getText()));
         System.out.println(liv.getId());
         adDAO.atualizar(liv, adm);
-       
+
     }//GEN-LAST:event_atualizarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

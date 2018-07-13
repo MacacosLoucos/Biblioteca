@@ -15,12 +15,16 @@ public class TelaUsuario extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaUsuario
+     *
      * @param user
      */
     public TelaUsuario(Usuario user) {
         initComponents();
         super.setLocationRelativeTo(null);
+        this.user = user;
     }
+
+    Usuario user;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -85,13 +89,14 @@ public class TelaUsuario extends javax.swing.JFrame {
 
     private void pedidoEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pedidoEmprestimoActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_pedidoEmprestimoActionPerformed
 
     private void procurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_procurarActionPerformed
         // TODO add your handling code here:
-        Procurar p = new Procurar();
+        Procurar p = new Procurar(user);
         p.setVisible(true);
+        
     }//GEN-LAST:event_procurarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

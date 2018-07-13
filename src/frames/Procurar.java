@@ -5,9 +5,9 @@
  */
 package frames;
 
+import ClassesDAO.AdministradoresDAO;
 import biblioteca.*;
-
-
+import java.util.ArrayList;
 
 /**
  *
@@ -17,12 +17,56 @@ public class Procurar extends javax.swing.JFrame {
 
     /**
      * Creates new form Procurar
+     *
+     * @param user
      */
-    
-    public Procurar(){
+    public Procurar(Usuario user) {
         initComponents();
         super.setLocationRelativeTo(null);
-        
+        this.user = user;
+        this.lista();
+
+    }
+
+    /**
+     *
+     * @param adm
+     */
+    public Procurar(Administrador adm) {
+        initComponents();
+        super.setLocationRelativeTo(null);
+        this.adm = adm;
+        this.lista();
+
+    }
+
+    Usuario user;
+    Administrador adm;
+    AdministradoresDAO admDAO = new AdministradoresDAO();
+
+    private void lista() {
+        ArrayList<Livros> listaLivros = new ArrayList();
+        listaLivros = admDAO.vizualizar();
+        // se o id que o usuario digitar estiver vazio, a lista será composta de todos os livros
+        if (idLivro.getText().equals("")) { 
+            for (int i = 0; i < listaLivros.size(); i++) {
+                lista.add(listaLivros.get(i).toString(), this);
+
+            }
+        } // se nao, a lista que inicialmente tinha todos os livros é atualizada
+        else {
+            // removendo todos os componentes
+            lista.removeAll();
+            for (int i = 0; i < listaLivros.size(); i++) {
+                if ((listaLivros.get(i).getId() + "").equals(idLivro.getText())) {
+                    // se houver um livro com o mesmo id que o usuario forneceu, ele é adicionado a lista
+                    lista.add(listaLivros.get(i).toString(), this);
+
+                }
+
+            }
+        }
+
     }
 
     /**
@@ -34,22 +78,17 @@ public class Procurar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buscarLivro = new javax.swing.JTextField();
+        idLivro = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        procurarLista = new javax.swing.JList<>();
+        lista = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        buscarLivro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarLivroActionPerformed(evt);
-            }
-        });
-        buscarLivro.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                buscarLivroKeyReleased(evt);
+        idLivro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                idLivroKeyTyped(evt);
             }
         });
 
@@ -57,56 +96,54 @@ public class Procurar extends javax.swing.JFrame {
         jLabel1.setText("Por favor digite o nome do livro");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setText("Livro:");
+        jLabel2.setText("ID DO LIVRO:");
 
-        jScrollPane1.setViewportView(procurarLista);
+        jScrollPane1.setViewportView(lista);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
-                    .addComponent(buscarLivro))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(idLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(156, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(125, 125, 125))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel1)
-                .addGap(66, 66, 66)
+                .addGap(67, 67, 67)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buscarLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
                 .addGap(40, 40, 40))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buscarLivroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscarLivroKeyReleased
+    private void idLivroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idLivroKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_buscarLivroKeyReleased
+        //sempre que uma nova tecla for DIGITADA NO CAMPO DE TEXTO, o metodo lista é chamado para atualizar
+        lista();
+    }//GEN-LAST:event_idLivroKeyTyped
 
-    private void buscarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarLivroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscarLivroActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField buscarLivro;
+    private javax.swing.JTextField idLivro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<String> procurarLista;
+    private javax.swing.JList<String> lista;
     // End of variables declaration//GEN-END:variables
 }
