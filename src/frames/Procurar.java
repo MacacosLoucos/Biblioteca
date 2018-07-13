@@ -8,6 +8,7 @@ package frames;
 import ClassesDAO.AdministradoresDAO;
 import biblioteca.*;
 import java.util.ArrayList;
+import javax.swing.ListModel;
 
 /**
  *
@@ -43,29 +44,17 @@ public class Procurar extends javax.swing.JFrame {
     Usuario user;
     Administrador adm;
     AdministradoresDAO admDAO = new AdministradoresDAO();
+    String[] s;
 
     private void lista() {
-        ArrayList<Livros> listaLivros = new ArrayList();
-        listaLivros = admDAO.vizualizar();
-        // se o id que o usuario digitar estiver vazio, a lista será composta de todos os livros
-        if (idLivro.getText().equals("")) { 
-            for (int i = 0; i < listaLivros.size(); i++) {
-                lista.add(listaLivros.get(i).toString(), this);
+        ArrayList<Livros> listaLivros = admDAO.vizualizar();
+        s = new String[listaLivros.size()];
 
-            }
-        } // se nao, a lista que inicialmente tinha todos os livros é atualizada
-        else {
-            // removendo todos os componentes
-            lista.removeAll();
-            for (int i = 0; i < listaLivros.size(); i++) {
-                if ((listaLivros.get(i).getId() + "").equals(idLivro.getText())) {
-                    // se houver um livro com o mesmo id que o usuario forneceu, ele é adicionado a lista
-                    lista.add(listaLivros.get(i).toString(), this);
-
-                }
-
-            }
+        for (int i = 0; i < listaLivros.size(); i++) {
+            s[i] = listaLivros.get(i).toString();
         }
+        lista.setListData(s);
+        listaLivros.clear();
 
     }
 
@@ -78,7 +67,7 @@ public class Procurar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        idLivro = new javax.swing.JTextField();
+        nomeLivro = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -86,9 +75,9 @@ public class Procurar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        idLivro.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                idLivroKeyTyped(evt);
+        nomeLivro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                nomeLivroKeyReleased(evt);
             }
         });
 
@@ -96,7 +85,7 @@ public class Procurar extends javax.swing.JFrame {
         jLabel1.setText("Por favor digite o nome do livro");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setText("ID DO LIVRO:");
+        jLabel2.setText("NOME DO LIVRO:");
 
         jScrollPane1.setViewportView(lista);
 
@@ -104,46 +93,53 @@ public class Procurar extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(27, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(idLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(nomeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(49, 49, 49))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(67, 67, 67)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(idLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
-                .addGap(40, 40, 40))
+                .addGap(57, 57, 57))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void idLivroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idLivroKeyTyped
+    private void nomeLivroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nomeLivroKeyReleased
         // TODO add your handling code here:
-        //sempre que uma nova tecla for DIGITADA NO CAMPO DE TEXTO, o metodo lista é chamado para atualizar
-        lista();
-    }//GEN-LAST:event_idLivroKeyTyped
+        String[] t = new String[s.length];
+        for (int i = 0; i < s.length; i++) {
+            if (s[i].contains(nomeLivro.getText())) {
+                t[i] = this.s[i];
+            }
+
+        }
+        lista.setListData(t);
+
+    }//GEN-LAST:event_nomeLivroKeyReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField idLivro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<String> lista;
+    private javax.swing.JTextField nomeLivro;
     // End of variables declaration//GEN-END:variables
 }

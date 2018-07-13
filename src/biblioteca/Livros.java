@@ -47,6 +47,10 @@ public class Livros {
     public Livros() {
     }
 
+    public Livros(int id) {
+        this.id = id;
+    }
+
     public String getTitulo() {
         return titulo;
     }

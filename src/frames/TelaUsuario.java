@@ -89,6 +89,8 @@ public class TelaUsuario extends javax.swing.JFrame {
 
     private void pedidoEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pedidoEmprestimoActionPerformed
         // TODO add your handling code here:
+        PedidoDeEmprestimo pde = new PedidoDeEmprestimo(user);
+        pde.setVisible(true);
 
     }//GEN-LAST:event_pedidoEmprestimoActionPerformed
 

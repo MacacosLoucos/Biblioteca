@@ -18,6 +18,9 @@ import javax.swing.JOptionPane;
  */
 public class UsuarioDAO extends PessoasDAO implements IFuncoesUSER {
 
+    public UsuarioDAO() {
+    }
+
     /*Método que permite ao usuário e administradores vizualizarem todos os livros
     que estão cadastrados e ativos*/
     @Override
