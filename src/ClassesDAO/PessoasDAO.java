@@ -86,5 +86,37 @@ public abstract class PessoasDAO {
         }
         return null;
     }
+    
+    public Livros procurarLivro(Livros liv) {
+
+        PreparedStatement n = null;
+
+        Livros busca = null;
+
+        String sql = "SELECT * FROM tb_livros WHERE liv_id = ?;";
+
+        try {
+            n = Conectar.getConexao().prepareStatement(sql);
+
+            n.setInt(1, liv.getId());
+
+            ResultSet rs = n.executeQuery();
+
+            if (rs.next()) {
+                
+                busca = new Livros(rs.getString("liv_titulo"), rs.getString("liv_autor"),
+                        rs.getString("liv_editora"), rs.getString("liv_area"),
+                        rs.getInt("liv_id"), rs.getInt("tb_pessoas_pes_id"),
+                        rs.getString("liv_data_atualizacao"), rs.getString("liv_data_cadastro"),
+                        rs.getInt("liv_quantidade"), rs.getInt("liv_estado"));
+                
+            }
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Não foi possível encontrar a pessoa\n" + e, "Atenção!", 2);
+        }
+        
+        return busca;
+    }
 
 }

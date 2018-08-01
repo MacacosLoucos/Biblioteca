@@ -10,7 +10,7 @@ package biblioteca;
  * @author Rocha
  */
 public class Livros {
-    
+
     private String titulo;
     private String autor;
     private String editora;
@@ -30,8 +30,7 @@ public class Livros {
         this.quantidade = quantidade;
     }
 
-    public Livros(String titulo, String autor, String editora, String area, int
-            id, int id_administrador, String data_de_atualizacao, 
+    public Livros(String titulo, String autor, String editora, String area, int id, int id_administrador, String data_de_atualizacao,
             String data_de_cadastro, int quantidade, int estado) {
         this.titulo = titulo;
         this.autor = autor;
@@ -47,7 +46,11 @@ public class Livros {
 
     public Livros() {
     }
-    
+
+    public Livros(int id) {
+        this.id = id;
+    }
+
     public String getTitulo() {
         return titulo;
     }
@@ -127,7 +130,10 @@ public class Livros {
     public void setEstado(int estado) {
         this.estado = estado;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "Livros{" + "titulo=" + titulo + ", autor=" + autor + ", editora=" + editora + ", area=" + area + ", id=" + id + ", id_administrador=" + id_administrador + ", data_de_atualizacao=" + data_de_atualizacao + ", data_de_cadastro=" + data_de_cadastro + ", quantidade=" + quantidade + '}';
+    }
+
 }

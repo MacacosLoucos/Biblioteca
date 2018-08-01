@@ -43,7 +43,6 @@ public class TelaADM extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        devolverLivroTela = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -123,13 +122,6 @@ public class TelaADM extends javax.swing.JFrame {
             .addGap(0, 489, Short.MAX_VALUE)
         );
 
-        devolverLivroTela.setText("Devolver livro");
-        devolverLivroTela.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                devolverLivroTelaActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -152,13 +144,13 @@ public class TelaADM extends javax.swing.JFrame {
                         .addGap(34, 34, 34)
                         .addComponent(jLabel1))
                     .addComponent(emprestarLivroTela, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(devolverLivroTela, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(348, 348, 348)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(atualizarLivroTela, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(procurarTela, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(208, 208, 208)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(adicionarLivroTela, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(atualizarLivroTela, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(procurarTela, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(adicionarLivroTela, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -174,14 +166,15 @@ public class TelaADM extends javax.swing.JFrame {
                 .addComponent(adicionarLivroTela)
                 .addGap(18, 18, 18)
                 .addComponent(emprestarLivroTela)
-                .addGap(17, 17, 17)
-                .addComponent(devolverLivroTela)
-                .addGap(0, 0, 0)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(procurarTela)
-                .addGap(16, 16, 16)
-                .addComponent(atualizarLivroTela))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(procurarTela)
+                        .addGap(16, 16, 16)
+                        .addComponent(atualizarLivroTela))))
             .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -192,8 +185,9 @@ public class TelaADM extends javax.swing.JFrame {
 
     private void procurarTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_procurarTelaActionPerformed
         // TODO add your handling code here:
-        Procurar p = new Procurar();
+        Procurar p = new Procurar(adm);
         p.setVisible(true);
+        
     }//GEN-LAST:event_procurarTelaActionPerformed
 
     private void adicionarLivroTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarLivroTelaActionPerformed
@@ -204,7 +198,7 @@ public class TelaADM extends javax.swing.JFrame {
 
     private void atualizarLivroTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarLivroTelaActionPerformed
         // TODO add your handling code here:
-        Atualizar a = new Atualizar();
+        Atualizar a = new Atualizar(adm);
         a.setVisible(true);
     }//GEN-LAST:event_atualizarLivroTelaActionPerformed
 
@@ -215,16 +209,9 @@ public class TelaADM extends javax.swing.JFrame {
         
     }//GEN-LAST:event_emprestarLivroTelaActionPerformed
 
-    private void devolverLivroTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverLivroTelaActionPerformed
-        // TODO add your handling code here:
-        DevolverEmprestimos de = new DevolverEmprestimos();
-        de.setVisible(true);
-    }//GEN-LAST:event_devolverLivroTelaActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adicionarLivroTela;
     private javax.swing.JButton atualizarLivroTela;
-    private javax.swing.JButton devolverLivroTela;
     private javax.swing.JButton emprestarLivroTela;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

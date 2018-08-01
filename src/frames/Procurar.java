@@ -5,9 +5,10 @@
  */
 package frames;
 
+import ClassesDAO.AdministradoresDAO;
 import biblioteca.*;
-
-
+import java.util.ArrayList;
+import javax.swing.ListModel;
 
 /**
  *
@@ -17,12 +18,44 @@ public class Procurar extends javax.swing.JFrame {
 
     /**
      * Creates new form Procurar
+     *
+     * @param user
      */
-    
-    public Procurar(){
+    public Procurar(Usuario user) {
         initComponents();
         super.setLocationRelativeTo(null);
-        
+        this.user = user;
+        this.lista();
+
+    }
+
+    /**
+     *
+     * @param adm
+     */
+    public Procurar(Administrador adm) {
+        initComponents();
+        super.setLocationRelativeTo(null);
+        this.adm = adm;
+        this.lista();
+
+    }
+
+    Usuario user;
+    Administrador adm;
+    AdministradoresDAO admDAO = new AdministradoresDAO();
+    String[] s;
+
+    private void lista() {
+        ArrayList<Livros> listaLivros = admDAO.vizualizar();
+        s = new String[listaLivros.size()];
+
+        for (int i = 0; i < listaLivros.size(); i++) {
+            s[i] = listaLivros.get(i).toString();
+        }
+        lista.setListData(s);
+        listaLivros.clear();
+
     }
 
     /**
@@ -34,22 +67,17 @@ public class Procurar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buscarLivro = new javax.swing.JTextField();
+        nomeLivro = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        procurarLista = new javax.swing.JList<>();
+        lista = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        buscarLivro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarLivroActionPerformed(evt);
-            }
-        });
-        buscarLivro.addKeyListener(new java.awt.event.KeyAdapter() {
+        nomeLivro.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                buscarLivroKeyReleased(evt);
+                nomeLivroKeyReleased(evt);
             }
         });
 
@@ -57,56 +85,61 @@ public class Procurar extends javax.swing.JFrame {
         jLabel1.setText("Por favor digite o nome do livro");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setText("Livro:");
+        jLabel2.setText("NOME DO LIVRO:");
 
-        jScrollPane1.setViewportView(procurarLista);
+        jScrollPane1.setViewportView(lista);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
-                    .addComponent(buscarLivro))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(156, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(125, 125, 125))
+                .addContainerGap(27, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nomeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(49, 49, 49))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(66, 66, 66)
+                .addGap(67, 67, 67)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buscarLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomeLivro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
+                .addGap(57, 57, 57))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buscarLivroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscarLivroKeyReleased
+    private void nomeLivroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nomeLivroKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_buscarLivroKeyReleased
+        String[] t = new String[s.length];
+        for (int i = 0; i < s.length; i++) {
+            if (s[i].contains(nomeLivro.getText())) {
+                t[i] = this.s[i];
+            }
 
-    private void buscarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarLivroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscarLivroActionPerformed
+        }
+        lista.setListData(t);
+
+    }//GEN-LAST:event_nomeLivroKeyReleased
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField buscarLivro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<String> procurarLista;
+    private javax.swing.JList<String> lista;
+    private javax.swing.JTextField nomeLivro;
     // End of variables declaration//GEN-END:variables
 }

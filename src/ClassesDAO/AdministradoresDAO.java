@@ -25,7 +25,7 @@ import javax.swing.JOptionPane;
 public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
 
     /*Método para procurar o ultimo livro cadastrado para adicinar seus exemplares*/
-    private int ultimoIdLivro() {
+    public int ultimoIdLivro() {
         PreparedStatement n = null;
         String sql = "SELECT max(liv_id) as id FROM tb_livros;";
         int valorID = 0;
@@ -50,7 +50,7 @@ public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
 
         PreparedStatement n = null;
 
-        String sql = "DELETE FROM tb_exemplar WHERE exe_numero LIKE ?%;";
+        String sql = "DELETE FROM tb_exemplar WHERE tb_livros_liv_id = ?;";
 
         try {
             n = Conectar.getConexao().prepareStatement(sql);
@@ -166,7 +166,7 @@ public class AdministradoresDAO extends PessoasDAO implements IFuncoesADM {
         PreparedStatement n = null;
 
         String sql = "UPDATE tb_livros SET liv_titulo = ?, liv_autor = ?,"
-                + "liv_area = ?, liv_editora = ?, liv_quantidade = ?, liv_data_atualizacao = NOW(),"
+                + "liv_area = ?, liv_editora = ?, liv_quantidade = ?, liv_data_atualizacao = ?,"
                 + "tb_pessoas_pes_id = ? WHERE liv_id = ?;";
 
         try {
